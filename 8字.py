@@ -1,3 +1,4 @@
+# 代码源自: https://bbs.dji.com/thread-230083-1-1.html
 def start():
     初始化()
 
