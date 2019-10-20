@@ -5,12 +5,12 @@ def start():
         if 次数 % 2 == 0:
             云台.俯仰(30)
             云台.俯仰(-10)
-            print(str(次数) + ' nod')
+            告知(str(次数) + ' nod')
         else:
             云台.平转(10)
             云台.平转(-10)
             云台.平转(0)
-            print(str(次数) + ' shake')
+            告知(str(次数) + ' shake')
         次数 += 1
 
 # 以下为API中文化部分, 与程序逻辑无关. 请勿作修改.
@@ -24,3 +24,5 @@ def start():
 
 常量 = rm_define
 常量.自由模式 = 常量.robot_mode_free
+
+告知 = print
