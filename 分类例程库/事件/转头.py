@@ -1,3 +1,4 @@
+# 介绍： https://zhuanlan.zhihu.com/p/86692696
 def start():
     大师.设置模式(常量.自由模式)
     云台.设置旋转速度(60)

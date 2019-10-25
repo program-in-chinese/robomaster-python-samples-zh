@@ -1,3 +1,4 @@
+# 介绍： https://zhuanlan.zhihu.com/p/87072890
 def start():
     短=0.3
     中=0.5
