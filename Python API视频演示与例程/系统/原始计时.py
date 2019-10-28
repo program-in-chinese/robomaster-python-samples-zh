@@ -1,4 +1,7 @@
 # 源于 https://gist.github.com/apalala/3fbbeb5305584d2abe05
+
+# Intel Core i7-2635QM @ 2.00GHz 0.2929880619049072 秒
+
 from math import sin, cos, radians
 import time
 def bench():
