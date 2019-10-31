@@ -4,15 +4,19 @@ def start():
     云台.平转(90)
 
     运行时间 = 工具.程序运行时间()
-    print("90 degree with 20 speed: " + str(运行时间))
+    print("90 degree with 20 speed 1: " + str(运行时间))
 
-    云台.平转(-180)
+    云台.平转(-90)
+    print("90 degree with 20 speed 2: " + str(工具.程序运行时间() - 运行时间))
+    
+    运行时间 = 工具.程序运行时间()
+    云台.平转(180)
     print("180 degree with 20 speed: " + str(工具.程序运行时间() - 运行时间))
     
     云台.设置旋转速度(40)
     运行时间 = 工具.程序运行时间()
-    云台.平转(90)
-    print("90 degree with 40 speed: " + 工具.程序运行时间() - 运行时间)
+    云台.平转(-180)
+    print("180 degree with 40 speed: " + str(工具.程序运行时间() - 运行时间))
 
 # 以下为API中文化部分, 与程序逻辑无关. 请勿作修改.
 
