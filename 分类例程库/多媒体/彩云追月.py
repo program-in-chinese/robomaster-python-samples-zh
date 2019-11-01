@@ -29,10 +29,13 @@ def start():
             t = 工具.累计计时()
             gimbal_ctrl.rotate(rm_define.gimbal_left)
 
+    print(str(工具.程序运行时间()) + " seconds")
+
 # 以下为API中文化部分, 与程序逻辑无关. 请勿作修改.
 
 工具 = tools
 工具.累计计时 = 工具.timer_current
+工具.程序运行时间 = 工具.run_time_of_program
 
 常量 = rm_define
 常量.哆1 = 常量.media_sound_solmization_1C
