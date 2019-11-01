@@ -1,8 +1,4 @@
 def start():
-    云台.设置旋转速度(30)
-    云台灯(常量.云台所有, 绿色, 常量.效果闪烁)
-    大师.设置模式(常量.底盘跟随模式)
-
     单位间隔 = 53/160
     乐谱 = [
         常量.嗦1, 3, 常量.啦1, 1, 常量.哆2, 1, 常量.来2, 1, 常量.咪2, 1, 常量.嗦2, 1, 常量.啦2, 8,
@@ -21,15 +17,17 @@ def start():
         常量.嗦2, 1, 常量.咪2, 3, 常量.来2, 1, 常量.啦1, 4,
         常量.嗦2, 1, 常量.啦2, 1, 常量.嗦2, 1, 常量.发2, 1, 常量.咪2, 1, 常量.嗦2, 1, 常量.来2, 2, 常量.哆2, 8
     ]
-    tools.timer_ctrl(rm_define.timer_start)
+
+    云台.设置旋转速度(30)
+    云台灯(常量.云台所有, 绿色, 常量.效果闪烁)
+    大师.设置模式(常量.底盘跟随模式)
+    工具.计时器(常量.开始)
+
     for 序号 in range(0, len(乐谱) // 2):
         多媒体.演奏(乐谱[序号 * 2])
-        t0 = tools.timer_current()
-        t = t0
-        nextTs = t0 + 乐谱[序号 * 2 + 1] * 单位间隔
-        while t < nextTs:
-            t = 工具.累计计时()
-            gimbal_ctrl.rotate(rm_define.gimbal_left)
+        下个音符时刻 = 工具.累计计时() + 乐谱[序号 * 2 + 1] * 单位间隔
+        while 工具.累计计时() < 下个音符时刻:
+            云台.旋转(常量.云台向左)
 
     print(str(工具.程序运行时间()) + " seconds")
 
@@ -53,10 +51,12 @@ LED灯.云台 = LED灯.set_top_led
 云台 = gimbal_ctrl
 云台.设置旋转速度 = 云台.set_rotate_speed
 云台.平转 = 云台.yaw_ctrl
+云台.旋转 = 云台.rotate
 
 工具 = tools
 工具.累计计时 = 工具.timer_current
 工具.程序运行时间 = 工具.run_time_of_program
+工具.计时器 = 工具.timer_ctrl
 
 多媒体 = media_ctrl
 多媒体.演奏 = 多媒体.play_sound
@@ -74,11 +74,17 @@ LED灯.云台 = LED灯.set_top_led
 常量.云台左 = 常量.armor_top_left
 常量.云台右 = 常量.armor_top_right
 
+常量.云台向左 = 常量.gimbal_left
+
 常量.效果常亮 = 常量.effect_always_on
 常量.效果熄灭 = 常量.effect_always_off
 常量.效果呼吸 = 常量.effect_breath
 常量.效果闪烁 = 常量.effect_flash
 常量.效果走马灯 = 常量.effect_marquee
+
+常量.开始 = 常量.timer_start
+常量.暂停 = 常量.timer_stop
+常量.重置 = 常量.timer_reset
 
 常量.哆1 = 常量.media_sound_solmization_1C
 常量.来1 = 常量.media_sound_solmization_1D
