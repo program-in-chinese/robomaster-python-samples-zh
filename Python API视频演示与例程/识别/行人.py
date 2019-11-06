@@ -1,10 +1,10 @@
 def 开始():
-    vision_ctrl.enable_detection(rm_define.vision_detection_people)
+    视觉.开启识别(行人)
     
     while True:
-        if vision_ctrl.check_condition(rm_define.cond_recognized_people):
-            行人信息 = vision_ctrl.get_people_detection_info()
-            print(行人信息)
+        if 视觉.当识别到(常量.有行人时):
+            信息 = 视觉.取行人信息()
+            告知(信息)
         时间.睡眠(1)
         
 
@@ -12,42 +12,17 @@ def 开始():
 
 start = 开始
 
-工具 = tools
-工具.取上电时间 = tools.get_unixtime
-
-LED灯 = led_ctrl
-LED灯.云台 = LED灯.set_top_led
-
-大师 = robot_ctrl
-大师.设置模式 = 大师.set_mode
-
-云台 = gimbal_ctrl
-云台.设置旋转速度 = 云台.set_rotate_speed
-云台.平转 = 云台.yaw_ctrl
-云台.俯仰 = 云台.pitch_ctrl
-
-底盘 = chassis_ctrl
-底盘.设置旋转速度 = 底盘.set_rotate_speed
-底盘.旋转指定角度 = 底盘.rotate_with_degree
+视觉 = vision_ctrl
+视觉.开启识别 = 视觉.enable_detection
+视觉.当识别到 = 视觉.check_condition
+视觉.取行人信息 = 视觉.get_people_detection_info
 
 # 常量部分
 常量 = rm_define
-常量.底盘跟随模式 = 常量.robot_mode_chassis_follow
-常量.云台跟随模式 = 常量.robot_mode_gimbal_follow
-常量.自由模式 = 常量.robot_mode_free
-
-常量.顺时针 = 常量.clockwise
-常量.逆时针 = 常量.anticlockwise
-
-常量.云台所有 = 常量.armor_top_all
-常量.云台左 = 常量.armor_top_left
-常量.云台右 = 常量.armor_top_right
-
-常量.效果常亮 = 常量.effect_always_on
-常量.效果熄灭 = 常量.effect_always_off
-常量.效果呼吸 = 常量.effect_breath
-常量.效果闪烁 = 常量.effect_flash
-常量.效果走马灯 = 常量.effect_marquee
+常量.有行人时 = 常量.cond_recognized_people
+常量.行人 = 常量.vision_detection_people
 
 时间 = time
 时间.睡眠 = 时间.sleep
+
+告知 = print
